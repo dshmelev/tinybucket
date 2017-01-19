@@ -24,9 +24,9 @@ module Tinybucket
       #
       # @param options [Hash]
       # @return [Tinybucket::Model::Page]
-      def list(options = {})
+      def list(options = {}, branch: nil)
         get_path(
-          path_to_list,
+          path_to_list(branch),
           options,
           Tinybucket::Parser::CommitsParser
         )

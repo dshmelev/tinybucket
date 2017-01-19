@@ -8,8 +8,12 @@ module Tinybucket
 
         private
 
-        def path_to_list
-          build_path(base_path, 'commits')
+        def path_to_list(branch)
+          if branch
+            build_path(base_path, 'commits', branch)
+          else
+            build_path(base_path, 'commits')
+          end
         end
 
         def path_to_find(revision)
