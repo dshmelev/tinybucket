@@ -31,7 +31,7 @@ module Tinybucket
         },
         ssl: { verify: false },
         url: 'https://api.bitbucket.org/2.0'.freeze
-      }
+      }.merge(_options)
     end
 
     def default_middleware(_options)

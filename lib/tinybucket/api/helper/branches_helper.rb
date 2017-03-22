@@ -8,6 +8,14 @@ module Tinybucket
 
         private
 
+        def path_to_delete(branch)
+          build_path('/repositories',
+                     [repo_owner, 'repo_owner'],
+                     [repo_slug, 'repo_slug'],
+                     '_branch',
+                     [branch, 'branch'])
+        end
+
         def path_to_list
           build_path(base_path)
         end

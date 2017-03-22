@@ -30,6 +30,9 @@ module Tinybucket
         commits_resource.branch(name, options)
       end
 
+      def destroy
+        branches_api.delete(name)
+      end
       private
 
       def commits_resource(options = {})

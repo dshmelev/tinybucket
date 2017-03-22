@@ -28,6 +28,17 @@ module Tinybucket
         )
       end
 
+      def delete(name, options = {})
+        delete_path(
+          path_to_delete(name),
+          options,
+          nil,
+          { url: 'https://api.bitbucket.org/1.0'}
+        )
+        # BitBucket responds with null body, but content-type is application/json
+        rescue Faraday::ParsingError
+      end
+
       # Send 'GET an individual branch' request
       #
       # @see https://developer.atlassian.com/bitbucket/api/2/reference/resource/repositories/%7Busername%7D/%7Brepo_slug%7D/refs/branches/%7Bname%7D#get

@@ -44,4 +44,13 @@ RSpec.describe Tinybucket::Model::Branch do
     it { expect(subject).to be_an_instance_of(Tinybucket::Enumerator) }
     it { expect(subject).to all( be_an_instance_of Tinybucket::Model::Commit) }
   end
+
+  describe 'destroy' do
+    subject { model.destroy }
+    it do
+      stub_request(:delete, "https://api.bitbucket.org/1.0/repositories/test_owner/test_repo/_branch/master").
+         to_return(:status => 200, :body => "", :headers => {})
+      expect(subject)
+    end
+  end
 end
